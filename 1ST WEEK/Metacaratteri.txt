@@ -1,0 +1,5 @@
+"%" - zero o più caratteri ("bl%" = bl, black, blue e blob);
+"_" - un singolo carattere ("h_t" = hot, hat e hit);
+"[]" - ogni singolo carattere all'interno delle parentesi ("h[oa]t" = hot e hat);
+"^" - qualsiasi carattere non compreso tra parentesi ("h[^oa]t" = hit);
+"-" - qualsiasi carattere all'interno del range specificato ("c[a-b]t" = cat e cbt);
