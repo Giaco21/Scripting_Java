@@ -8,14 +8,19 @@ public static void main(String args[])
 
  System.out.println("Prego inserisca il numero a cui far terminare la serie di Fibonacci: \n");   
  count = contator.nextInt();
+
  System.out.print(n1+" "+n2);//printing 0 and 1    
-    
+
  for(i=2;i<count;++i)//il loop inizia da 2 perchè 0 e 1 vengono già stampati
  {    
-  n3=n1+n2;    
+
+  n3=n1+n2;   
+  if(n3%2!=0){
   System.out.print(" "+n3);    
+  }
   n1=n2;    
-  n2=n3;    
+  n2=n3;  
  }    
+
   contator.close();
 }}  
