@@ -1,6 +1,7 @@
 import java.util.Scanner;
  import java.math.BigInteger;
   
+ //Giacomo Germinario
  /** Classe FibFinder **/
  public class FibFinder
  {
