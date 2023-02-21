@@ -3,6 +3,7 @@ public class FibNoRecursion{
   static int n1=0,n2=1,n3,i,count=0, sc;            //variabili
   static Scanner contator = new Scanner(System.in); //scanner
   static Scanner scelta = new Scanner(System.in);
+  
 public static void main(String args[])  
 {    
 menu();
@@ -47,8 +48,9 @@ public static void FibonacciGenerator(){
   contator.close();
 }
 
+//Questi 3 metodi usano l'algebra per effettuare controlli aggiuntivi sui numeri della serie. Ho preferito inserirli tutti e due ma ho scelto di usare quello più "base"
 
-public static void FibonacciFinderNmr(){
+/* public static void FibonacciFinderNmr(){
 
   Scanner scan = new Scanner(System.in);
   System.out.print("Input a number: ");
@@ -61,17 +63,43 @@ if (n>0)
   }else System.out.println("Il numero inserito non e' un numero della serie di Fibonacci\n");
 
 } 
-}
+}*/
 
-public static boolean isPerfectSquare(int x)
+/* public static boolean isPerfectSquare(int x)
 {
    int s = (int) Math.sqrt(x); 
    return (s*s == x);
- }
+ }*/
 
-public static boolean isFibonacci(int x)
+/* public static boolean isFibonacci(int x)
 {
    return isPerfectSquare(5*x*x + 4) || isPerfectSquare(5*x*x - 4);
+}*/
+
+
+public static void FinderFibonacci(){
+    Scanner input = new Scanner(System.in);
+    System.out.print("Input a number: " );
+    int num = input.nextInt();
+
+    int p1 = 0;
+    int p2 = 1;
+    int p = p1+p2;
+    boolean flog = false;
+    for (int i = 0; i <= num; i++){
+        if (p == num){
+            flog = true;
+            break;
+        }
+        if (p > num) break;
+        p1 = p2;
+        p2 = p;
+        p = p1+p2;
+    }
+    if(flog == false){
+      System.out.println("Il numero inserito non fa parte della serie di Fibonacci\n");
+    }else System.out.println("Il numero inserito fa parte della serie di Fibonacci\n" );
+
 }
 
 public static void menu(){
@@ -89,7 +117,8 @@ public static void menu(){
     FibonacciGeneratorEvenNumber();
     break;
     case 3:
-    FibonacciFinderNmr();
+    // FibonacciFinderNmr();
+    FinderFibonacci();
     break;
     default : System.out.println("ERRORE! SELEZIONARE UN VALORE VALIDO");
     menu();
