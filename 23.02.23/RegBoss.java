@@ -6,6 +6,16 @@ public class RegBoss {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Object[]> users = new ArrayList<>();
         boolean capoPresente = false;
+        boolean SonoAdmin = false;
+        boolean Sonocapo = false;
+        boolean SonoLIVELLO = true;
+        
+        public static void Gestione livello(){
+            //Qui uno dei tre dovrà sempre essere settato true in base al livello.
+        
+        }
+
+     
 
         while (true) {
             System.out.println("1. Registra utente");
