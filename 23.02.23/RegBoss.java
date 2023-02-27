@@ -3,9 +3,12 @@ import java.util.Scanner;
 
 public class RegBoss {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            ArrayList<Object[]> users = new ArrayList<>();
-            boolean capoPresente = false;
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Object[]> users = new ArrayList<>();
+        boolean capoPresente = false;
+        boolean SonoAdmin = false;
+        boolean Sonocapo = false;
+        boolean SonoLIVELLO = true;
 
             while (true) {
                 System.out.println("1. Registra utente");
@@ -111,5 +114,8 @@ public class RegBoss {
                     }
                 }
         }
+        public static void GestioneLivello(){
+            //Qui uno dei tre dovrà sempre essere settato true in base al livello.
+
         }
     }
