@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class Ristorante_Constructed {
+
     
-    public class Piatto {
+    class Piatto {
         private String nome;
         private double prezzo;
         private String tipo;
@@ -38,7 +38,7 @@ public class Ristorante_Constructed {
         }
     }
     
-    public class Conto {
+    class Conto {
         private ArrayList<Piatto> piatti;
         private double totale;
         
@@ -60,13 +60,13 @@ public class Ristorante_Constructed {
             return piatti;
         }
 
-        public void eliminaPiatto(Ristorante_Constructed.Piatto piatto) {
+        public void eliminaPiatto(Piatto piatto) {
             piatti.remove(piatto);
             totale -= piatto.getPrezzo();
         }
     }
+    public class Ristorante_Constructed {
         public static void main(String[] args) {
-            
             Piatto pizza = new Piatto("Pizza Margherita", 8.50, "Pizza");
             Piatto lasagne = new Piatto("Lasagne alla Bolognese", 12.50, "Primo");
             Piatto tiramisu = new Piatto("Tiramisù", 5.50, "Dolce");
@@ -183,4 +183,4 @@ public class Ristorante_Constructed {
                             } while (scelta != 0);
                             scanner.close();
                         }
-}
+                    }
