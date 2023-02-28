@@ -1,5 +1,3 @@
-package VARIE;
-
 import java.util.Scanner;
 
 public class controllori {

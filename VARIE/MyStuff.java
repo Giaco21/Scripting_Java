@@ -1,5 +1,3 @@
-package VARIE;
-
 import java.sql.*;
 
 public class MyStuff {
