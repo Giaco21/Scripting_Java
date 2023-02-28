@@ -1,3 +1,6 @@
+package Fibonacci_Exercises;
+
+
 import java.util.Scanner;
 
 public class FibSeries {

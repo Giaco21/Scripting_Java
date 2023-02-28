@@ -1,11 +1,36 @@
+package Fibonacci_Exercises;
+
 import java.util.Scanner;
+import com.mysql.cj.jdbc.Driver;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 public class FibNoRecursion{  
   static int n1=0,n2=1,n3,i,count=0, sc;            //variabili
   static Scanner contator = new Scanner(System.in); //scanner
   static Scanner scelta = new Scanner(System.in);
   
 public static void main(String args[])  
-{    
+{   
+  
+  // ---------------- TEST JDBC --------------
+String DB_URL = "jdbc:mysql://localhost:3306/world";
+String DB_USERNAME = "root";
+String DB_PASSWORD = "Cucina21";
+
+try {
+  Connection myConnection = null;
+  myConnection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+
+  if(myConnection==null){
+    System.out.println("CONNESSIONE NON STABILITA\n");
+  } System.out.println("CONNESSIONE AVVENUTA CON SUCCESSO\n");
+
+} catch (SQLException e) {
+  e.printStackTrace();
+}
+//------------------------------------------
 menu();
 }
 
