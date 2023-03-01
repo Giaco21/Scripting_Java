@@ -24,10 +24,10 @@ public class CitiesByCountryCode {
       Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "Cucina21");
       
       Statement stmt = conn.createStatement();
-      String sql = "SELECT c.Name, co.Name AS CountryName, c.Population " +
-                   "FROM city c " +
-                   "JOIN country co ON c.CountryCode = co.Code " +
-                   "WHERE c.CountryCode = '" + countryCode + "'";
+      String sql = String.format("SELECT c.Name, co.Name AS CountryName, c.Population " +
+                                 "FROM city c " +
+                                 "JOIN country co ON c.CountryCode = co.Code " +
+                                 "WHERE c.CountryCode = '" + countryCode +"'");
 
       if (minPopulation > 0) {
         sql += " AND c.Population >= " + minPopulation;
@@ -42,13 +42,16 @@ public class CitiesByCountryCode {
       
       System.out.println("Cities in " + countryCode + ":");
       while (rs.next()) {
-        String cityName = rs.getString("Name");
-        int population = rs.getInt("Population");
+        String tableFormat = String.format("CITTA': %s CODICE: %s",
+
+        rs.getString(1),
+        rs.getInt(2));
+        System.out.println(tableFormat);
+
         String countryName = "";
         if (showCountryName) {
-          countryName = " (" + rs.getString("CountryName") + ")";
+          countryName = " (" + rs.getString(3) + ")";
         }
-        System.out.println(cityName + countryName + " - Population: " + population);
       }
       
       conn.close();

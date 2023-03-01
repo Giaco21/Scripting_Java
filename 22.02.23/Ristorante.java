@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +16,9 @@ public class Ristorante {
             { "Panino vegetariano", "Pomodoro, mozzarella, rucola", "6.5" },
             { "Panino con salmone", "Salmone affumicato, cream cheese", "8.0" }
     };
+
+    public Ristorante(ArrayList<Pietanza> listaPietanze) {
+    }
 
     public static void main(String[] args) {
 
@@ -206,5 +210,15 @@ public class Ristorante {
                 System.out.println("Scelta non valida");
                 return;
         }
+    }
+
+    public String getContoAperto() {
+        return null;
+    }
+
+    public void visualizza(int input) {
+    }
+
+    public void ordina(int input) {
     }
 }
