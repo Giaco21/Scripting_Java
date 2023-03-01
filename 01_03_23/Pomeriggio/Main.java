@@ -2,7 +2,6 @@ package Pomeriggio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class Main {
     private static ArrayList<Utente> utentiRegistrati = new ArrayList<>();
@@ -62,6 +61,7 @@ public class Main {
         
         if (utente.verificaPassword(password)) {
             System.out.println("Accesso effettuato con successo");
+            GestioneRistorante.main(null);
             // Aggiungi qui il codice per il menu dell'utente loggato
         } else {
             System.out.println("Password errata");
