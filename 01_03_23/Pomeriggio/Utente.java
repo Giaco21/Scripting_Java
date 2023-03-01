@@ -26,6 +26,10 @@ public class Utente {
 
     private double generaBudgetCasuale() {
         Random rand = new Random();
-        return 100 + rand.nextDouble() * 9900;
+        return 10 + rand.nextDouble() * 9900;
+    }
+    
+    public double getBudget(){
+        return this.budget;
     }
 }
