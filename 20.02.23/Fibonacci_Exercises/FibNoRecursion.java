@@ -1,10 +1,6 @@
 package Fibonacci_Exercises;
 
 import java.util.Scanner;
-import com.mysql.cj.jdbc.Driver;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.xdevapi.PreparableStatement;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -32,23 +28,22 @@ public class FibNoRecursion {
       }
       System.out.println("CONNESSIONE AVVENUTA CON SUCCESSO\n");
       // Prova lettura dal DB
-      String QUERY = "SELECT * FROM city";
+      String QUERY =("SELECT C.name, CL.Language, CL.Percentage as perc from country as C inner join countrylanguage as Cl on C.Code = CL.CountryCode LIMIT 5;");
       Statement stm = myConnection.createStatement();
-      ResultSet rs = stm.executeQuery(QUERY);
-      while (rs.next()) {
-        String tableFormat = String.format("ID: %s NAME: %s COUNTRYCODE: %s DISTRICT: %s POPULATION: %s",
-            rs.getString(1),
-            rs.getString(2),
-            rs.getString(3),
-            rs.getString(4),
-            rs.getString(5));
+      ResultSet rss = stm.executeQuery(QUERY);
+      while (rss.next()) {
+        String tableFormat = String.format("NAME: %s LANGUAGE: %s PERCENTUALE: %s",
+            rss.getString(1),
+            rss.getString(2),
+            rss.getString(3));
         System.out.println(tableFormat);
-      }
+      }stm.close();
 
     } catch (SQLException e) {
       e.printStackTrace();
     }
     // ------------------------------------------
+
     menu();
   }
 
@@ -152,6 +147,7 @@ public class FibNoRecursion {
       System.out.println("Il numero inserito non fa parte della serie di Fibonacci\n");
     } else
       System.out.println("Il numero inserito fa parte della serie di Fibonacci\n");
+      input.close();
 
   }
 
