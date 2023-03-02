@@ -1,67 +1,56 @@
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class CitiesByCountryCode {
-
-    static Scanner code = new Scanner(System.in);
-    static Scanner orderDesc = new Scanner(System.in);
-    static Scanner showCoName = new Scanner(System.in);
-    static Scanner population = new Scanner(System.in);
+    public static Scanner interi = new Scanner(System.in);
+    public static Scanner stringa = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-        System.out.println("Prego inserisca il codice della nazione da cercare: \n");
-        String countryCode = code.nextLine(); // codice della nazione fornito dall'utente
-        System.out.println("Vuole ordinarle in ordine discendente o ascendente?\n [1]DESC\n [2]ASC\n: \n");
-        int orderDescending = orderDesc.nextInt();
-        // se l'utente vuole ordinare le città in modo decrescente o meno
-        boolean orderDesce = false; // Inizializziamo la variabile
-        if (orderDescending == 1) {
-            orderDesce = true;
-        }
-
-        int minPopulation = 100000; // minimo di popolazione per filtrare le città
-        boolean showCountryName = true; // se mostrare il nome della nazione a cui fa riferimento il code
+        Connection conn = null;
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "Cucina21");
-
-            Statement stmt = conn.createStatement();
-            String sql = String.format("SELECT c.Name, co.Name AS CountryName, c.Population " +
-                    "FROM city as c " +
-                    "JOIN country as co ON c.CountryCode = co.Code " +
-                    "WHERE c.CountryCode = '%s'", countryCode); // Utilizziamo una variabile di formato per evitare errori di sintassi
-
-            if (minPopulation > 0) {
-                sql += " AND c.Population >= " + minPopulation;
-            }
-            if (orderDesce) {
-                sql += " ORDER BY c.Population DESC";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "Cucina21");
+            if (conn != null) {
+                System.out.println("Connesso");
             } else {
-                sql += " ORDER BY c.Population ASC";
+                System.out.println("Connessione fallita");
             }
+            // Prova lettura db
 
-            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("Prego, Inserisca il Codice della Nazione");
+            String codInput = "%" + stringa.nextLine() + "%";
+            System.out.println("Prego, inserisca un numero per filtrare sul minimo della popolazione:");
+            int popInput = interi.nextInt();
+            System.out.println("Prego, selezioni se vuole vedere il nome della nazione o nasconderlo [1]SI [2]NO");
+            int nome = stringa.nextInt();
+            System.out.println("Prego, vuole ordinare in maniera discendente o ascendente? [1]ASCENDENTE [2]DISCENDENTE");
+            int ordInput = interi.nextInt();
+            String tempOrd;
+            if (ordInput == 1)
+                tempOrd = "ASC";
+            else
+                tempOrd = "DESC";
 
-            System.out.println("Cities in " + countryCode + " : ");
+            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, country.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by Population "+ tempOrd;
+            PreparedStatement stm = conn.prepareStatement(query);
+            stm.setInt(1, nome);
+            stm.setInt(2, popInput);
+            stm.setString(3, codInput);
+
+            ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                String tableFormat = String.format("CITTA': %s NOME NAZIONE: %s POPOLAZIONE: %s",
+                String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
                         rs.getString(1),
                         rs.getString(2),
-                        rs.getInt(3));
+                        rs.getString(3),
+                        rs.getString(4));
                 System.out.println(tableFormat);
-
-                if (showCountryName) {
-                    String countryName = rs.getString(4);
-                    System.out.println("Nazione: " + countryName);
-                }
             }
-
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }
