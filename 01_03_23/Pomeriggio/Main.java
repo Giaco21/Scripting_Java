@@ -42,37 +42,41 @@ public class Main {
     private static void registrati() {
         System.out.println("Vuoi registrarti come utente o admin? \n [1]ADMIN\n [2]UTENTE\n");
         int sc = inp.nextInt();
-        if(sc == 2){
-            System.out.print("Inserisci il nome utente: ");
-            String nomeUtente = input.nextLine();
-            if (utenteEsiste(nomeUtente)) {
-                System.out.println("Il nome utente è già stato preso");
-                return;
+        while (contaAdmin<2){
+
+            if(sc == 2){
+                System.out.print("Inserisci il nome utente: ");
+                String nomeUtente = input.nextLine();
+                if (utenteEsiste(nomeUtente)) {
+                    System.out.println("Il nome utente è già stato preso");
+                    return;
+                }
+                System.out.print("Inserisci la password: ");
+                String password = input.nextLine();
+                Utente nuovoUtente = new Utente(nomeUtente, password);
+                utentiRegistrati.add(nuovoUtente);
+                System.out.println("Registrazione avvenuta con successo");
+            }else{
+                System.out.print("Inserisci il nome utente dell'admin: ");
+                String nomeAdmin = input.nextLine();
+                if (adminEsiste(nomeAdmin)) {
+                    System.out.println("Il nome utente dell'admin è già stato preso");
+                    return;
+                }
+                System.out.print("Inserisci la password: ");
+                String password = input.nextLine();
+                
+                UUID id = Admin.getId();
+                System.out.print("Inserisci il codice di accesso: ");
+                String codice = input.nextLine();
+                Admin nuovoAdmin = new Admin(nomeAdmin, password, id, codice);
+                adminRegistrati.add(nuovoAdmin);
+                System.out.println("Registrazione avvenuta con successo");
+                contaAdmin++;
             }
-            System.out.print("Inserisci la password: ");
-            String password = input.nextLine();
-            Utente nuovoUtente = new Utente(nomeUtente, password);
-            utentiRegistrati.add(nuovoUtente);
-            System.out.println("Registrazione avvenuta con successo");
-        }else{
-            System.out.print("Inserisci il nome utente dell'admin: ");
-            String nomeAdmin = input.nextLine();
-            if (adminEsiste(nomeAdmin)) {
-                System.out.println("Il nome utente dell'admin è già stato preso");
-                return;
-            }
-            System.out.print("Inserisci la password: ");
-            String password = input.nextLine();
-            
-            UUID id = Admin.getId();
-            System.out.print("Inserisci il codice di accesso: ");
-            String codice = input.nextLine();
-            Admin nuovoAdmin = new Admin(nomeAdmin, password, id, codice);
-            adminRegistrati.add(nuovoAdmin);
-            System.out.println("Registrazione avvenuta con successo");
-            
 
         }
+
 
     }
 
@@ -93,7 +97,7 @@ public class Main {
             if (utente.verificaPassword(password)) {
                 System.out.println("Accesso effettuato con successo");
                 GestioneRistorante.main(null);
-                // Aggiungi qui il codice per il menu dell'utente loggato
+                // Aggiungo qui il codice per il menu dell'utente loggato
             } else {
                 System.out.println("Password errata");
             }
@@ -111,12 +115,12 @@ public class Main {
             System.out.print("Inserisci il codice di accesso: ");
             String code = codice.nextLine();
             
-            if (admin.verificaPassword(password)) {
-                if(admin.verificaCodiceAccesso(code)){
+            if (admin.verificaCodiceAccesso(code)) {
+                if(admin.verificaPassword(password)){
 
                     System.out.println("Accesso effettuato con successo");
                     System.out.println("Sei QUI, DEVI CONTINUARE !!!!!!!!!!!!!!!");
-                    // Aggiungi qui il codice per il menu dell'admin loggato
+                    // Aggiungo qui il codice per il menu dell'admin loggato
                 }else System.out.println("Codice errato");
             }else System.out.println("Password errata");
         }
