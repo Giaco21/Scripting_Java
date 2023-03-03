@@ -69,7 +69,7 @@ public class Biblioteca {
         }
         System.out.println("Il libro " + titolo + " non è disponibile nella biblioteca.");
     }
-    //metodo che stampa una lista dei libri disponibili 
+    //metodo che stampa una lista dei libri disponibili
     public void stampaLibriDisponibili() {
         if(elencoLibri.isEmpty()) {
             System.out.println("Non ci sono libri disponibili nella biblioteca.");

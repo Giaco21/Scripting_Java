@@ -10,6 +10,11 @@ public class Main_Biblioteca {
         biblioteca.aggiungiLibro(new Libro("Guerra e Pace", 2));
         
         Scanner scanner = new Scanner(System.in);
+        Scanner titolo = new Scanner(System.in);
+        Scanner titolo2 = new Scanner(System.in);
+        Scanner titoloagg = new Scanner(System.in);
+        Scanner titolorimosso = new Scanner(System.in);
+        Scanner numcopie = new Scanner(System.in);
         
         // Ciclo per gestire le richieste dell'utente
         while (true) {
@@ -27,42 +32,49 @@ public class Main_Biblioteca {
             switch (scelta) {
                 case 1: //PRESTARE UN LIBRO
                     System.out.println("\nQuale libro vuoi prendere in prestito?");
-                    String titoloPrestato = scanner.nextLine();
+                    String titoloPrestato = titolo.nextLine();
                     biblioteca.prestaLibro(titoloPrestato);
+
                     break;
                     
                 case 2: //RESTITUIRE LIBRO
                     System.out.println("\nQuale libro vuoi restituire?");
-                    String titoloRestituito = scanner.nextLine();
+                    String titoloRestituito = titolo2.nextLine();
                     biblioteca.restituisciLibro(titoloRestituito);
+
                     break;
                     
                 case 3: //AGGIUNGERE LIBRO
                     System.out.println("\nQuale libro vuoi aggiungere?");
-                    String titoloAggiunto = scanner.nextLine();
+                    String titoloAggiunto = titoloagg.nextLine();
                     System.out.println("Quante copie vuoi aggiungere?");
-                    int numCopieAggiunte = scanner.nextInt();
+                    int numCopieAggiunte = numcopie.nextInt();
 
                     biblioteca.aggiungiLibro(new Libro(titoloAggiunto, numCopieAggiunte));
+
                     break;
                     
                 case 4: //RIMUOVERE LIBRO
                     System.out.println("\nQuale libro vuoi rimuovere?");
-                    String titoloRimosso = scanner.nextLine();
+                    String titoloRimosso = titolorimosso.nextLine();
                     biblioteca.rimuoviLibro(titoloRimosso);
+
                     break;
                     
                 case 5: //STAMPA LIBRI DISPONIBILI
                     System.out.println("\nI libri disponibili sono:");
                     biblioteca.stampaLibriDisponibili();
+
                     break;
                     
                 case 6: //ADDIO
                     System.out.println("\nArrivederci!");
+
                     return;
                     
                 default: //ERRORE
                     System.out.println("\nScelta non valida.");
+
             }
         }
     }
