@@ -14,6 +14,7 @@ public class Biblioteca {
     public void aggiungiLibro(Libro libro) {
         if(!elencoLibri.contains(libro)) {
             elencoLibri.add(libro);
+            System.out.println("Il libro è stato aggiunto con successo!\n");
         }
     }
     //metodo che passato il titolo esatto di un libro, prima invoca il metodo trovalibro per controllare che esiste. Se questo esiste deve eliminarlo, altrimenti comunica che non esiste.
