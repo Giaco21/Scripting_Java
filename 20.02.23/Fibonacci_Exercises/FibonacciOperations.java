@@ -3,6 +3,7 @@ package Fibonacci_Exercises;
 import java.util.Scanner;
 
 public class FibonacciOperations {
+    
     static int n1 = 0, n2 = 1, n3, i, count = 0;// variabili
     static Scanner contator = new Scanner(System.in); // scanner
 

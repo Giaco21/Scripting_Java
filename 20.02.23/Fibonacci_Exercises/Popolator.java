@@ -1,8 +1,8 @@
 package Fibonacci_Exercises;
 import java.sql.*;
-
 public class Popolator {
     public static void main(String[] args) {
+        
         String url = "jdbc:mysql://localhost:3306/fibonacci";
         String username = "root";
         String password = "Cucina21";
