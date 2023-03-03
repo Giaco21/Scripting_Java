@@ -1,14 +1,16 @@
 package Esercitazione_3rd_week;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Biblioteca {
-    private List<Libro> elencoLibri;
+    private ArrayList<Libro> elencoLibri;
+
     
     //costruttore
     public Biblioteca() {
         elencoLibri = new ArrayList<>();
+
     }
     //metodo che aggiunge un oggetto Libro se questo che viene inserito in input è effettivamente un Libro
     public void aggiungiLibro(Libro libro) {

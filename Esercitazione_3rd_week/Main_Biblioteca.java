@@ -8,14 +8,38 @@ public class Main_Biblioteca {
         biblioteca.aggiungiLibro(new Libro("Il Signore degli Anelli", 5));
         biblioteca.aggiungiLibro(new Libro("Harry Potter e la pietra Filosofale", 3));
         biblioteca.aggiungiLibro(new Libro("Guerra e Pace", 2));
-        
+
         Scanner scanner = new Scanner(System.in);
+        Scanner inputUsername = new Scanner (System.in);
+        Scanner inputPW = new Scanner(System.in);
         Scanner titolo = new Scanner(System.in);
         Scanner titolo2 = new Scanner(System.in);
         Scanner titoloagg = new Scanner(System.in);
         Scanner titolorimosso = new Scanner(System.in);
         Scanner numcopie = new Scanner(System.in);
         
+        //registrazione di un utente
+        Scanner input = new Scanner(System.in);
+        System.out.println("Benvenuto alla biblioteca!");
+        System.out.print("Inserisci il tuo nome utente: ");
+        String nomeUtente = input.nextLine();
+        System.out.print("Inserisci la tua password: ");
+        String password = input.nextLine();
+        Utente utente = new Utente(nomeUtente, password);
+        
+
+        while (!utente.login(nomeUtente, password)) {
+            System.out.println("Nome utente o password errati. Riprova.");
+            System.out.print("Inserisci il tuo nome utente: ");
+            nomeUtente = inputUsername.nextLine();
+            System.out.print("Inserisci la tua password: ");
+            password = inputPW.nextLine();
+        
+            utente = new Utente(nomeUtente, password);
+        }
+        
+        System.out.println("Accesso consentito. Benvenuto " + utente.getNomeUtente() + "!");
+            
         // Ciclo per gestire le richieste dell'utente
         while (true) {
             System.out.println("\nCosa vuoi fare?");
