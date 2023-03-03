@@ -6,16 +6,17 @@ import java.util.List;
 public class Biblioteca {
     private List<Libro> elencoLibri;
     
+    //costruttore
     public Biblioteca() {
         elencoLibri = new ArrayList<>();
     }
-    
+    //metodo che aggiunge un oggetto Libro se questo che viene inserito in input è effettivamente un Libro
     public void aggiungiLibro(Libro libro) {
         if(!elencoLibri.contains(libro)) {
             elencoLibri.add(libro);
         }
     }
-    
+    //metodo che passato il titolo esatto di un libro, prima invoca il metodo trovalibro per controllare che esiste. Se questo esiste deve eliminarlo, altrimenti comunica che non esiste.
     public void rimuoviLibro(String titolo) {
         Libro libro = trovaLibro(titolo);
         if (libro == null) {
@@ -25,7 +26,7 @@ public class Biblioteca {
             System.out.println("Il libro " + titolo + " è stato rimosso dalla biblioteca.");
         }
     }
-
+    //metodo che cerca un libro nell'arraylist Libro. Se lo trova restituisce un tipo Libro. Altrimenti null
     public Libro trovaLibro(String titolo) {
         for (Libro libro : elencoLibri) {
             if (libro.getTitolo().equals(titolo)) {
@@ -34,7 +35,7 @@ public class Biblioteca {
         }
         return null;
     }
-    
+    //metodo che ricevuto il titolo come parametro, ciclando l'arraylist libro, lo trova e se lo trova diminuisce il numero di copie disponibili di 1 e aumenta quelle in prestito di 1
     public void prestaLibro(String titolo) {
         for(Libro libro : elencoLibri) {
             if(libro.getTitolo().equals(titolo)) {
@@ -51,7 +52,7 @@ public class Biblioteca {
         }
         System.out.println("Il libro " + titolo + " non è disponibile nella biblioteca.");
     }
-    
+    //metodo che fa l'esatto opposto di prestaLibro
     public void restituisciLibro(String titolo) {
         for(Libro libro : elencoLibri) {
             if(libro.getTitolo().equals(titolo)) {
@@ -68,7 +69,7 @@ public class Biblioteca {
         }
         System.out.println("Il libro " + titolo + " non è disponibile nella biblioteca.");
     }
-    
+    //metodo che stampa una lista dei libri disponibili 
     public void stampaLibriDisponibili() {
         if(elencoLibri.isEmpty()) {
             System.out.println("Non ci sono libri disponibili nella biblioteca.");
