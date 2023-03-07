@@ -3,7 +3,7 @@ package Fibonacci_Exercises;
 import java.util.Scanner;
 
 public class MenuFibonacci {
-
+    private Scanner sc = new Scanner(System.in);
     public void menu() {
 
         boolean continua = true;
@@ -42,12 +42,9 @@ public class MenuFibonacci {
     }
 
     public int inputSelezione(String inputMessage) {
-        Scanner sc = new Scanner(System.in);
         System.out.println(inputMessage);
         int num = sc.nextInt();
-        sc.close();
+        sc.nextLine(); // consuma il carattere di fine linea lasciato dal metodo nextInt()
         return num;
-
-    }
-
+        }
 }
