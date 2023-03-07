@@ -4,11 +4,18 @@ import java.util.Scanner;
 public class RegistratoreDiIngressiMain {
     
     public static void main(String[] args) {
+
+        menuRegistratoreDiIngressi();
+
+    }
+
+
+    public static void menuRegistratoreDiIngressi(){
+
         Scanner scelta = new Scanner(System.in);
         Scanner nameAnimal = new Scanner(System.in);
         Scanner etaAnimal = new Scanner(System.in);
         Scanner animal = new Scanner(System.in);
-        Scanner felin = new Scanner(System.in);
 
         ArrayList<Felino> felini = new ArrayList<>();
         ArrayList<Canide> canidi = new ArrayList<>();
@@ -22,6 +29,7 @@ public class RegistratoreDiIngressiMain {
             if (risposta.equals("s")) {
                 System.out.println("Che tipo di animale vuoi registrare? [Felino/Canide/Anfibio/Roditore]");
                 String tipoAnimale = animal.nextLine();
+
                 if (tipoAnimale.equals("Felino")) {
                     System.out.println("Inserisci il nome del felino:");
                     String nome = nameAnimal.nextLine();
@@ -29,6 +37,7 @@ public class RegistratoreDiIngressiMain {
                     int eta = etaAnimal.nextInt();
 
                     felini.add(new Felino(nome, eta));
+
                 } else if (tipoAnimale.equals("Canide")) {
                     System.out.println("Inserisci il nome del canide:");
                     String nome = nameAnimal.nextLine();
@@ -36,6 +45,7 @@ public class RegistratoreDiIngressiMain {
                     int eta = etaAnimal.nextInt();
 
                     canidi.add(new Canide(nome, eta));
+
                 } else if (tipoAnimale.equals("Anfibio")) {
                     System.out.println("Inserisci il nome dell'anfibio:");
                     String nome = nameAnimal.nextLine();
@@ -43,6 +53,7 @@ public class RegistratoreDiIngressiMain {
                     int eta = etaAnimal.nextInt();
 
                     anfibi.add(new Anfibio(nome, eta));
+
                 } else if (tipoAnimale.equals("Roditore")) {
                     System.out.println("Inserisci il nome del roditore:");
                     String nome = nameAnimal.nextLine();
@@ -77,9 +88,9 @@ public class RegistratoreDiIngressiMain {
             System.out.println(anfibio.getNome() + " (età: " + anfibio.getEta() + ")");
         }
 
-        System.out.println("Roditori: " + canidi.size());
-        for (Roditore Roditori : roditori) {
-            System.out.println(Roditori.getNome() + " (età: " + Roditori.getEta() + ")");
+        System.out.println("Roditori: " + anfibi.size());
+        for (Roditore roditore : roditori) {
+            System.out.println(roditore.getNome() + " (età: " + roditore.getEta() + ")");
         }
     }
 }
