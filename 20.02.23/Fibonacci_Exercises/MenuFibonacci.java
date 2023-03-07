@@ -3,14 +3,16 @@ package Fibonacci_Exercises;
 import java.util.Scanner;
 
 public class MenuFibonacci {
-    private Scanner sc = new Scanner(System.in);
+
+    private String MENU = "Prego inserisca una scelta\n [1]Genera Fibonacci\n [2]Genera Fibonacci solo per dispari\n [3]Trova in Fibonacci\n [4]Esci\n ";
+    private String SALUT = "Arrivederci! ";
+    private String ERROR = "ERRORE! SELEZIONARE UN VALORE VALIDO ";
     public void menu() {
 
         boolean continua = true;
 
         do {
-            int sc = inputSelezione(
-                    "Prego inserisca una scelta\n [1]Genera Fibonacci\n [2]Genera Fibonacci solo per dispari\n [3]Trova in Fibonacci\n [4]Esci\n");
+            int sc = inputSelezione(MENU);
 
             switch (sc) {
 
@@ -30,18 +32,19 @@ public class MenuFibonacci {
                     break;
 
                 case 4:
-                    System.out.println("Arrivederci!");
+                    System.out.println(SALUT);
                     continua = false;
 
                     return;
 
                 default:
-                    System.out.println("ERRORE! SELEZIONARE UN VALORE VALIDO");
+                    System.out.println(ERROR);
             }
         } while (continua != false);
     }
 
     public int inputSelezione(String inputMessage) {
+        Scanner sc = new Scanner(System.in);
         System.out.println(inputMessage);
         int num = sc.nextInt();
         sc.nextLine(); // consuma il carattere di fine linea lasciato dal metodo nextInt()
