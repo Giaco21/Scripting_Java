@@ -17,17 +17,17 @@ public class MenuFibonacci {
             switch (sc) {
 
                 case 1:
-                    FibonacciOperations.FibonacciGenerator();
+                    FibonacciOperations.FibonacciGenerator(inputSelezione("Inserisci il numero di termini di Fibonacci da generare: "));
 
                     break;
 
                 case 2:
-                    FibonacciOperations.FibonacciGeneratorEvenNumber();
+                    FibonacciOperations.FibonacciGeneratorEvenNumber(inputSelezione("Inserisci il numero di termini di Fibonacci dispari da generare: "));
 
                     break;
 
                 case 3:
-                    FibonacciOperations.FinderFibonacci();
+                    FibonacciOperations.FinderFibonacci(inputSelezione("Inserisci il numero di cui vuoi trovare la posizione in Fibonacci: "));
 
                     break;
 

@@ -2,11 +2,10 @@ package Fibonacci_Exercises;
 
 public class FibonacciOperations {
 
-    static MenuFibonacci myMenu = new MenuFibonacci();
 
-    public static void FibonacciGenerator() {
+    public static void FibonacciGenerator(int num) {
 
-        int num = myMenu.inputSelezione("Inserisci il numero di termini di Fibonacci da generare: ");
+        //num = myMenu.inputSelezione("Inserisci il numero di termini di Fibonacci da generare: ");
 
         int n1 = 0, n2 = 1, n3, i;
         System.out.print(n1 + " " + n2);// printing 0 and 1
@@ -21,9 +20,9 @@ public class FibonacciOperations {
         System.out.println();
     }
 
-    public static void FibonacciGeneratorEvenNumber() {
+    public static void FibonacciGeneratorEvenNumber(int num) {
 
-        int num = myMenu.inputSelezione("Inserisci il numero di termini di Fibonacci dispari da generare: ");
+        //int num = myMenu.inputSelezione("Inserisci il numero di termini di Fibonacci dispari da generare: ");
 
         int n1 = 0, n2 = 1, n3, i, count = 0;
         System.out.print(n1 + " " + n2);// printing 0 and 1
@@ -42,9 +41,9 @@ public class FibonacciOperations {
         System.out.println();
     }
 
-    public static void FinderFibonacci() {
+    public static void FinderFibonacci(int num) {
 
-        int num = myMenu.inputSelezione("Inserisci il numero di cui vuoi trovare la posizione in Fibonacci: ");
+        //int num = myMenu.inputSelezione("Inserisci il numero di cui vuoi trovare la posizione in Fibonacci: ");
 
         int n1 = 0, n2 = 1, n3, i = 0;
 
