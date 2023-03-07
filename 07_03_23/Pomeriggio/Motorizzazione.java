@@ -5,54 +5,75 @@ import java.util.Scanner;
 
 public class Motorizzazione {
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
+        Scanner input3 = new Scanner(System.in);
         ArrayList<Veicolo> veicoli = new ArrayList<>();
 
-        // Inserimento delle auto
-        System.out.print("Inserisci il numero di auto che vuoi inserire: ");
-        int numAuto = input.nextInt();
+        System.out.println("VUOLE INSERIRE UN'AUTO O UNA MOTO ?\n  [1]AUTO\n [2]MOTO\n");
+        int sc = input.nextInt();
+        if (sc == 1) {
 
-        for (int i = 0; i < numAuto; i++) {
-            System.out.println("Inserisci i dati dell'auto " + (i + 1) + ":");
-            System.out.print("Marca: ");
-            String marca = input.next();
-            System.out.print("Modello: ");
-            String modello = input.next();
-            System.out.print("Anno di fabbricazione: ");
-            int annoFabbricazione = input.nextInt();
-            System.out.print("Numero di porte: ");
-            int numeroPorte = input.nextInt();
-            System.out.print("Tipo di carburante: ");
-            String tipoCarburante = input.next();
-            System.out.print("Consumo medio di carburante per 100 km: ");
-            double consumoMedio = input.nextDouble();
+            // Inserimento delle auto
+            System.out.print("Inserisci il numero di auto che vuoi inserire: ");
+            int numAuto = input.nextInt();
 
-            Auto auto = new Auto(marca, modello, annoFabbricazione, numeroPorte, tipoCarburante, consumoMedio);
-            veicoli.add(auto);
+            for (int i = 0; i < numAuto; i++) {
+                System.out.println("Inserisci i dati dell'auto " + (i + 1) + ":");
+                System.out.print("Marca: ");
+                String marca = input.next();
+                System.out.print("Modello: ");
+                String modello = input.next();
+                System.out.print("Anno di fabbricazione: ");
+                int annoFabbricazione = input.nextInt();
+                System.out.print("Numero di porte: ");
+                int numeroPorte =  input.nextInt();
+                System.out.print("Tipo di carburante: ");
+                String tipoCarburante = input.next();
+                System.out.print("Consumo medio di carburante per 100 km: ");
+                double consumoMedio = input.nextDouble();
+
+                Auto auto = new Auto(marca, modello, annoFabbricazione, numeroPorte, tipoCarburante, consumoMedio);
+                veicoli.add(auto);
+            }
+        } else if(sc ==2 ) {
+            // Inserimento delle moto
+            System.out.print("Inserisci il numero di moto che vuoi inserire: ");
+            int numMoto = input.nextInt();
+
+            for (int i = 0; i < numMoto; i++) {
+                System.out.println("Inserisci i dati della moto " + (i + 1) + ":");
+                System.out.print("Marca: ");
+                String marca = input.next();
+                System.out.print("Modello: ");
+                String modello = input.next();
+                System.out.print("Anno di fabbricazione: ");
+                int annoFabbricazione = input.nextInt();
+                System.out.print("Cilindrata: ");
+                int cilindrata = input.nextInt();
+                System.out.print("Tipologia (sportiva, stradale, etc.): ");
+                String tipologia = input.next();
+                System.out.print("Potenza: ");
+                int potenza = input.nextInt();
+
+                Moto moto = new Moto(marca, modello, annoFabbricazione, cilindrata, tipologia, potenza);
+                veicoli.add(moto);
+            }
         }
 
-        // Inserimento delle moto
-        System.out.print("Inserisci il numero di moto che vuoi inserire: ");
-        int numMoto = input.nextInt();
-
-        for (int i = 0; i < numMoto; i++) {
-            System.out.println("Inserisci i dati della moto " + (i + 1) + ":");
-            System.out.print("Marca: ");
-            String marca = input.next();
-            System.out.print("Modello: ");
-            String modello = input.next();
-            System.out.print("Anno di fabbricazione: ");
-            int annoFabbricazione = input.nextInt();
-            System.out.print("Cilindrata: ");
-            int cilindrata = input.nextInt();
-            System.out.print("Tipologia (sportiva, stradale, etc.): ");
-            String tipologia = input.next();
-            System.out.print("Potenza: ");
-            int potenza = input.nextInt();
-
-            Moto moto = new Moto(marca, modello, annoFabbricazione, cilindrata, tipologia, potenza);
-            veicoli.add(moto);
-        }
+/*         System.out.println("VUOLE CERCARE UN VEICOLO INSERITO?\n [1]SI\n [2]NO\n");
+        int sc2 = input.nextInt();
+        if(sc2 ==1 ){
+            System.out.println("VUOLE CERCARE UNA MACCHINA O UNA MOTO?\n [1]AUTO\n [2]MOTO\n");
+            int sc3 = input3.nextInt();
+            if(sc3 ==1){
+                //inserire body macchina
+            }else {
+                //inserire body moto
+            }
+        }else{
+            return;
+        } */
 
         // Ricerca veicolo
         System.out.println("\nInserisci le caratteristiche del veicolo che vuoi cercare:");
