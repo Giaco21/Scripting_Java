@@ -9,7 +9,7 @@ public class CityView {
 
          // Crea uno statement per recuperare la vista
          Statement stmt = conn.createStatement();
-         String query = "SELECT * FROM italian_cities WHERE CountryCode='ITA'";
+         String query = "SELECT * FROM italian_cities";
          ResultSet rs = stmt.executeQuery(query);
 
          // Recupera i metadati dalla vista
