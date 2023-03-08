@@ -5,6 +5,7 @@ public class NewCityView {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Scanner risposta = new Scanner(System.in);
+        Scanner distretto = new Scanner(System.in);
         try {
             // Stabilisce la connessione al database
             Connection conn = DriverManager.getConnection(
@@ -32,7 +33,12 @@ public class NewCityView {
                 while (rs.next()) {
                     String nomeCittaVista = rs.getString("Name");
                     if (nomeCittaVista.equalsIgnoreCase(nomeCitta)) {
-                        cittaEsiste = true;
+                        System.out.println("Essendoci già una città col nome inserito, le chiedo di specificare la regione: ");
+                        String distrettoVista = distretto.nextLine();
+                        String districtVista = rs.getString("District");
+                        if(districtVista.equalsIgnoreCase(distrettoVista)){
+                            cittaEsiste = true;
+                        }  
                         break;
                     }
                 }
