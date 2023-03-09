@@ -1,4 +1,5 @@
 package GESTIONE_ERRORI;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -65,49 +66,62 @@ public class Converter {
                             gestore.aggiungi(decimale);
                             break;
                         default:
-                            System.out.println("Tipo non riconosciuto.");
+                            System.out.println("Inserisci un tipo valido.");
                             break;
                     }
                     break;
                 case 2:
                     ArrayList<String> stringhe = gestore.getStringhe();
-                    System.out.println(stringhe);
+                    for (String stringa : stringhe) {
+                        System.out.println(stringa);
+                    }
                     break;
                 case 0:
                     continua = false;
                     break;
                 default:
-                    System.out.println("Scelta non valida.");
+                    System.out.println("Inserisci una scelta valida.");
                     break;
             }
         }
+        scanner.close();
     }
 }
 
 class Gestore {
-    private ArrayList<Object> variabili;
+    private ArrayList<Integer> interi;
+    private ArrayList<String> stringhe;
+    private ArrayList<Double> decimali;
 
     public Gestore() {
-        variabili = new ArrayList<>();
+        interi = new ArrayList<>();
+        stringhe = new ArrayList<>();
+        decimali = new ArrayList<>();
     }
 
     public void aggiungi(Integer variabile) {
-        variabili.add(variabile);
+        interi.add(variabile);
     }
 
     public void aggiungi(String variabile) {
-        variabili.add(variabile);
+        stringhe.add(variabile);
     }
 
     public void aggiungi(Double variabile) {
-        variabili.add(variabile);
+        decimali.add(variabile);
     }
 
     public ArrayList<String> getStringhe() {
-        ArrayList<String> stringhe = new ArrayList<>();
-        for (Object variabile : variabili) {
-            stringhe.add(variabile.toString());
+        ArrayList<String> risultato = new ArrayList<>();
+        for (Integer intero : interi) {
+            risultato.add(intero.toString());
         }
-        return stringhe;
+        for (String stringa : stringhe) {
+            risultato.add(stringa);
+        }
+        for (Double decimale : decimali) {
+            risultato.add(decimale.toString());
+        }
+        return risultato;
     }
 }
