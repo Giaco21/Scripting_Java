@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Ordinazione extends ArrayList<Piatto> {
     private ArrayList<Piatto> piatti;
-    protected double totale = 0;
+    private double totale = 0;
 
     public Ordinazione() {
         piatti = new ArrayList<Piatto>();

@@ -3,15 +3,11 @@ package Mattina;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Esercizi_con_Metodi.second_method;
-import Fibonacci_Exercises.Second_Ex_ConnectionDB;
-
 public class Menu {
+
     public static Antipasto creaAntipasto() {
         Scanner scannerAntipasto = new Scanner(System.in);
-        Scanner scannerPrimo = new Scanner(System.in);
-        Scanner scanner = new Scanner(System.in);
-    
+
         System.out.println("Inserisci il nome dell'antipasto:");
         String nome = scannerAntipasto.nextLine();
     
