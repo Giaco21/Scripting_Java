@@ -50,12 +50,39 @@ public class Biblioteca {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Inserisci il genere del libro: ");
-        String genere = scanner.nextLine();
-
         Biblioteca biblioteca = new Biblioteca(0);
-        biblioteca.aggiungiLibro(genere);
 
-        System.out.println("Il libro di genere " + genere + " è stato aggiunto alla biblioteca.");
+        boolean continua = true;
+        while (continua) {
+            System.out.println("Cosa vuoi fare?");
+            System.out.println("1. Aggiungi un libro");
+            System.out.println("2. Visualizza i libri presenti nella biblioteca");
+            System.out.println("3. Esci");
+
+            int scelta = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (scelta) {
+                case 1:
+                    System.out.print("Inserisci il genere del libro: ");
+                    String genere = scanner.nextLine();
+                    biblioteca.aggiungiLibro(genere);
+                    System.out.println("Il libro di genere " + genere + " è stato aggiunto alla biblioteca.");
+                    break;
+                case 2:
+                    System.out.println("I libri presenti nella biblioteca sono:");
+                    ArrayList<Biblioteca.Libro> libri = biblioteca.getLibri();
+                    for (Biblioteca.Libro libro : libri) {
+                        System.out.println("- " + libro.getGenere());
+                    }
+                    break;
+                case 3:
+                    System.out.println("Arrivederci!");
+                    continua = false;
+                    break;
+                default:
+                    System.out.println("Scelta non valida. Riprova.");
+            }
+        }
     }
 }
