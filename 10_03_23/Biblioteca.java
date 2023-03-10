@@ -11,9 +11,22 @@ public class Biblioteca {
     }
 
     public void aggiungiLibro(String genere) {
+        // Controllo se esiste già un libro di questo genere nella biblioteca
+        for (Libro libro : libri) {
+            if (libro.getGenere().equals(genere)) {
+                libro.incrementaQuantita();
+                System.out.println("Il libro di genere " + genere + " è stato aggiunto alla biblioteca. \n" +
+                        "Ci sono ora " + libro.getQuantita() + " copie di questo libro nella biblioteca.\n");
+                return;
+            }
+        }
+    
+        // Se il genere del libro non è già presente nella biblioteca, creo un nuovo libro
         Libro libro = new Libro(genere);
         libri.add(libro);
         numeroLibri++;
+        System.out.println("Il libro di genere " + genere + " è stato aggiunto alla biblioteca. \n" +
+                "Ci sono ora " + libro.getQuantita() + " copie di questo libro nella biblioteca.\n");
     }
 
     public int getNumeroLibri() {
@@ -34,19 +47,37 @@ public class Biblioteca {
 
     public class Libro {
         private String genere;
-
+        private int quantita;
+    
         public Libro(String genere) {
             this.genere = genere;
+            this.quantita = 1;
         }
-
+    
         public String getGenere() {
             return genere;
         }
-
+    
         public void setGenere(String genere) {
             this.genere = genere;
         }
+    
+        public int getQuantita() {
+            return quantita;
+        }
+    
+        public void incrementaQuantita() {
+            this.quantita++;
+        }
+
+        public void print(){
+            System.out.println("Sono il libro!\n");
+        }
     }
+    public void MostraLibro(){
+        Libro libretto = new Libro(null);
+        libretto.print();
+    } 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
